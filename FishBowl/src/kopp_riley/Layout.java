@@ -51,6 +51,9 @@ public class Layout {
         feedAmount      = new TextField();
         feed            = new Button("Feed");
 
+        // Give the combo box a default value
+        actionSelection.getSelectionModel().selectFirst();
+
         // TODO add events
 
         list.add(actionSelection);
@@ -75,13 +78,17 @@ public class Layout {
         medium       = new Button("4x5");
         large        = new Button("6x8");
 
+
+        // TODO add events
+
+        // Prettify the Formatting
         HBox resizeOptions = new HBox();
         resizeOptions.setAlignment(Pos.CENTER_LEFT);
         resizeOptions.getChildren().addAll(small, medium, large);
-
         BorderPane.setAlignment(bowlInfo, Pos.CENTER);
         BorderPane.setAlignment(newDayButton, Pos.CENTER_LEFT);
-        //BorderPane.setAlignment(resizeOptions, Pos.CENTER_RIGHT);
+
+        // Add items to the correct sides of the pane.
         info.setLeft(newDayButton);
         info.setCenter(bowlInfo);
         info.setRight(resizeOptions);
