@@ -2,13 +2,11 @@ package kopp_riley;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
 public class Layout {
@@ -34,6 +32,7 @@ public class Layout {
         borderPane.setMinSize(700, 600);
         borderPane.setBottom(setupInfoBar());
         borderPane.setLeft(setupActionBar());
+        //borderPane.setCenter();
 
         scene = new Scene(borderPane);
         return scene;
@@ -42,6 +41,7 @@ public class Layout {
     private VBox setupActionBar(){
         VBox side = new VBox();
         side.setAlignment(Pos.CENTER);
+
         ObservableList list = side.getChildren();
 
         ObservableList<String> actions = FXCollections.observableArrayList(actionsList);
@@ -51,16 +51,21 @@ public class Layout {
         feedAmount      = new TextField();
         feed            = new Button("Feed");
 
+        // Spacing between selection and the feeding options
+        Region spacing  = new Region();
+        VBox.setVgrow(spacing, Priority.ALWAYS);
+
         // Give the combo box a default value
         actionSelection.getSelectionModel().selectFirst();
 
         // TODO add events
 
         list.add(actionSelection);
-        // TODO add R object here (See notes)
+        list.add(spacing);
         list.add(new Text("Feed Amount"));
         list.add(feedAmount);
         list.add(feed);
+
 
 
 
