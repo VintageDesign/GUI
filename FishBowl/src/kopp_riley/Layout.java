@@ -11,6 +11,8 @@ import javafx.scene.text.Text;
 
 public class Layout {
 
+    // Link to Controller
+    Controller controller;
 
     // Action Bar Items
     private String    actionsList[] = { "GoldFish", "AngelFish", "Remove"};
@@ -25,6 +27,11 @@ public class Layout {
     private Button medium;
     private Button large;
 
+    // Tank View
+    private TankView tank;
+
+
+
     public Scene init(){
         Scene scene;
 
@@ -32,10 +39,14 @@ public class Layout {
         borderPane.setMinSize(700, 600);
         borderPane.setBottom(setupInfoBar());
         borderPane.setLeft(setupActionBar());
-        //borderPane.setCenter();
+        borderPane.setCenter(setupTank());
 
         scene = new Scene(borderPane);
         return scene;
+    }
+
+    Layout(Controller controllerIn){
+        controller = controllerIn;
     }
 
     private VBox setupActionBar(){
@@ -51,11 +62,14 @@ public class Layout {
         feedAmount      = new TextField();
         feed            = new Button("Feed");
 
+        actionSelection.setMaxWidth(Double.MAX_VALUE);
+
         // Spacing between selection and the feeding options
         Region spacing  = new Region();
         VBox.setVgrow(spacing, Priority.ALWAYS);
 
         // Give the combo box a default value
+        actionSelection.setOnAction(controller.getComboBoxEvent());
         actionSelection.getSelectionModel().selectFirst();
 
         // TODO add events
@@ -78,7 +92,7 @@ public class Layout {
 
         // Init Items
         newDayButton = new Button("New Day");
-        bowlInfo     = new Text("TMP\nTMP\nTMP");
+        bowlInfo     = new Text("Day: 0\nFilled: 0\nDied: 0");
         small        = new Button("3x3");
         medium       = new Button("4x5");
         large        = new Button("6x8");
@@ -100,5 +114,11 @@ public class Layout {
 
 
         return info;
+    }
+
+    private TankView setupTank(){
+        tank = new TankView(controller);
+
+        return tank;
     }
 }

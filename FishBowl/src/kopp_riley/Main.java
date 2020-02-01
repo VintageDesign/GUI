@@ -4,11 +4,18 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import javax.management.modelmbean.ModelMBean;
+
 public class Main extends Application {
     private Layout layout;
+    private Controller controller;
+    private Aquarium model;
     @Override
     public void start(Stage stage) throws Exception {
-        layout = new Layout();
+        model = new Aquarium();
+        controller = new Controller(model);
+        layout = new Layout(controller);
+
         Scene scene = layout.init();
 
         stage.setScene(scene);
