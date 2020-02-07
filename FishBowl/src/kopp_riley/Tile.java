@@ -10,8 +10,10 @@ public class Tile {
     void newFish(Integer action){
         switch (action){
             case 0:
+                fish = new GoldFish();
+                break;
             case 1:
-                fish = new Fish();
+                fish = new AngelFish();
                 break;
             case 3:
                 fish = null;

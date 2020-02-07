@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class TankView extends GridPane {
     Integer rows;
     Integer cols;
+    Integer deathCount;
 
     ArrayList<TileView> fishList;
     TankView(Controller controller){
@@ -19,6 +20,8 @@ public class TankView extends GridPane {
         setAlignment(Pos.CENTER);
         rows = 3;
         cols = 3;
+
+        deathCount = 0;
 
 
 
