@@ -9,9 +9,11 @@ import javafx.scene.input.MouseEvent;
 
 public class Controller {
     Aquarium model;
+    Layout layout;
     Controller(Aquarium modelIn){
         model = modelIn;
     }
+
 
     private class AddFishEvent implements EventHandler<MouseEvent> {
 
@@ -24,6 +26,23 @@ public class Controller {
         }
     }
 
+    private class ResizeBowl implements EventHandler<MouseEvent> {
+        private Integer rows;
+        private Integer cols;
+
+        ResizeBowl(Integer rowsIn, Integer colsIn){
+            rows = rowsIn;
+            cols = colsIn;
+        }
+
+        @Override
+        public void handle(MouseEvent mouseEvent) {
+            model.setBowlSize(rows, cols);
+            layout.getTank().resize(rows, cols);
+
+        }
+    }
+
     // Updates the current selected action in the combo box.
     private class UpdateActionSelection implements EventHandler<ActionEvent>{
         public void handle(ActionEvent e)
@@ -31,6 +50,10 @@ public class Controller {
             model.setAction((ComboBox) e.getSource());
         }
     }
+
+    public void setLayout(Layout layoutIn){layout = layoutIn;}
+
+    public ResizeBowl getResizeBowl(Integer rowsIn, Integer colsIn){ return new ResizeBowl(rowsIn, colsIn);}
 
     public UpdateActionSelection getComboBoxEvent(){
         return new UpdateActionSelection();

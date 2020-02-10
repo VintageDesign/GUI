@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import javax.management.modelmbean.ModelMBean;
+import java.beans.PropertyChangeSupport;
 
 public class Main extends Application {
     private Layout layout;

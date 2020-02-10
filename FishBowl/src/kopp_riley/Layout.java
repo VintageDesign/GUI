@@ -6,6 +6,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
@@ -47,6 +48,7 @@ public class Layout {
 
     Layout(Controller controllerIn){
         controller = controllerIn;
+        controller.setLayout(this);
     }
 
     private VBox setupActionBar(){
@@ -99,6 +101,9 @@ public class Layout {
 
 
         // TODO add events
+        small.addEventHandler(MouseEvent.MOUSE_CLICKED, controller.getResizeBowl(3, 3));
+        medium.addEventHandler(MouseEvent.MOUSE_CLICKED, controller.getResizeBowl(4, 5));
+        large.addEventHandler(MouseEvent.MOUSE_CLICKED, controller.getResizeBowl(6, 8));
 
         // Prettify the Formatting
         HBox resizeOptions = new HBox();
@@ -121,4 +126,9 @@ public class Layout {
 
         return tank;
     }
+
+    public TankView getTank(){
+        return tank;
+    }
+
 }

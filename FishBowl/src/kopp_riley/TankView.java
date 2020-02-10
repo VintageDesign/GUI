@@ -12,18 +12,39 @@ public class TankView extends GridPane {
     Integer cols;
     Integer deathCount;
 
-    ArrayList<TileView> fishList;
-    TankView(Controller controller){
-        TileView tempFish;
-        fishList = new ArrayList<TileView>();
+    Controller controller;
 
+    ArrayList<TileView> fishList;
+    TankView(Controller controllerIn){
+        controller = controllerIn;
         setAlignment(Pos.CENTER);
         rows = 3;
         cols = 3;
+        createBowl();
+    }
+
+    void setMode(Aquarium newModel){
+
+    }
+
+    void resize(Integer rowsIn, Integer colsIn){
+        getChildren().clear();
+        getRowConstraints().clear();
+        getColumnConstraints().clear();
+
+        cols = colsIn;
+        rows = rowsIn;
+
+        createBowl();
+    }
+
+    private void createBowl(){
+        TileView tempFish;
+        fishList = new ArrayList<TileView>();
 
         deathCount = 0;
 
-
+        System.out.println(rows.toString());
 
         for( int i = 0; i < rows; i++){
             for (int j = 0; j< cols; j++){
@@ -37,14 +58,5 @@ public class TankView extends GridPane {
                 add(tempFish, j, i);
             }
         }
-
-    }
-
-    void setMode(Aquarium newModel){
-
-    }
-
-    void resize(Integer cols, Integer rows){
-
     }
 }
