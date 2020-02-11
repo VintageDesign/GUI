@@ -1,9 +1,10 @@
 package kopp_riley;
 
 public abstract class Fish {
-    protected Integer health;
-    protected Integer hunger;
-    protected Integer healthLossRate;
+    protected String   type;
+    protected Integer  health;
+    protected Integer  hunger;
+    protected Integer  healthLossRate;
     protected Integer  hungerRate;
     protected Integer  hungerThreshold;
 
@@ -29,5 +30,9 @@ public abstract class Fish {
 
     public Integer getHealth() {
         return health;
+    }
+    public String  getType(){ return type;}
+    public Integer getHunger() {
+        return hunger;
     }
 }
