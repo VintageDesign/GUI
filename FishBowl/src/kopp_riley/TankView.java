@@ -44,7 +44,7 @@ public class TankView extends GridPane {
 
         deathCount = 0;
 
-        System.out.println(rows.toString());
+        //System.out.println(rows.toString());
 
         for( int i = 0; i < rows; i++){
             for (int j = 0; j< cols; j++){

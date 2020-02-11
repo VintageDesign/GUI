@@ -21,7 +21,7 @@ public class Controller {
         public void handle(MouseEvent mouseEvent) {
             TileView button  = (TileView) mouseEvent.getSource();
 
-            model.doAction(button.getRow(), button.getCol());
+            model.doAction(button.getRow(), button.getCol(), mouseEvent);
 
         }
     }

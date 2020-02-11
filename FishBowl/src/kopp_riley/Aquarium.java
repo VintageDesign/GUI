@@ -1,8 +1,9 @@
 package kopp_riley;
 
 import javafx.scene.control.ComboBox;
+import javafx.scene.input.MouseEvent;
 
-import java.awt.event.MouseEvent;
+
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
@@ -55,7 +56,7 @@ public class Aquarium {
 
         for(int rowIdx = 0; rowIdx < rows; rowIdx++){
             for(int colIdx = 0; colIdx < cols; colIdx++){
-                tank[rowIdx][colIdx] = new Tile();
+                tank[rowIdx][colIdx]    = new Tile();
                 subject[rowIdx][colIdx] = new PropertyChangeSupport(this);
             }
         }
