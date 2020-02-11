@@ -51,7 +51,11 @@ public class Controller {
         }
     }
 
-    public void setLayout(Layout layoutIn){layout = layoutIn;}
+    public void setLayout(Layout layoutIn){
+        layout = layoutIn;
+        model.setDisplay(layout.getTank());
+    }
+
 
     public ResizeBowl getResizeBowl(Integer rowsIn, Integer colsIn){ return new ResizeBowl(rowsIn, colsIn);}
 

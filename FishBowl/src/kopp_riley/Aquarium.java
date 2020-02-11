@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.beans.EventHandler;
 
 public class Aquarium {
+    private TankView tankView;
     private Integer rows;
     private PropertyChangeSupport[][] subject;
     private Integer cols;
@@ -38,7 +39,7 @@ public class Aquarium {
     public void doAction(Integer row, Integer col, MouseEvent e){
         System.out.println("Doing action " + action.toString() + " on " + row.toString() + ", " + col.toString());
         tank[row][col].newFish(action);
-        subject[row][col].firePropertyChange("Update", 0, tank);
+        subject[row][col].firePropertyChange("Update", 0, tank[row][col]);
     }
 
     public void setBowlSize(Integer rowsIn, Integer colsIn){
@@ -58,8 +59,13 @@ public class Aquarium {
             for(int colIdx = 0; colIdx < cols; colIdx++){
                 tank[rowIdx][colIdx]    = new Tile();
                 subject[rowIdx][colIdx] = new PropertyChangeSupport(this);
+                subject[rowIdx][colIdx].addPropertyChangeListener(tankView.getTileView(rowIdx, colIdx));
             }
         }
 
+    }
+
+    public void setDisplay(TankView tankIn) {
+        tankView = tankIn;
     }
 }
