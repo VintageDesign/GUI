@@ -20,4 +20,8 @@ public class Tile {
                 break;
         }
     }
+
+    public Fish getFish() {
+        return fish;
+    }
 }

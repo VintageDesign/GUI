@@ -10,8 +10,7 @@ import javafx.scene.input.MouseEvent;
 public class Controller {
     Aquarium model;
     Layout layout;
-    Controller(Aquarium modelIn){
-        model = modelIn;
+    Controller(){
     }
 
 
@@ -37,8 +36,8 @@ public class Controller {
 
         @Override
         public void handle(MouseEvent mouseEvent) {
-            model.setBowlSize(rows, cols);
             layout.getTank().resize(rows, cols);
+            model.setBowlSize(rows, cols);
 
         }
     }
@@ -53,7 +52,12 @@ public class Controller {
 
     public void setLayout(Layout layoutIn){
         layout = layoutIn;
+    }
+
+    public void setModel(Aquarium modelIn){
+        model = modelIn;
         model.setDisplay(layout.getTank());
+        model.setBowlSize(3,3);
     }
 
 

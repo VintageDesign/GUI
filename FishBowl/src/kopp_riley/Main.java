@@ -13,11 +13,14 @@ public class Main extends Application {
     private Aquarium model;
     @Override
     public void start(Stage stage) throws Exception {
-        model = new Aquarium();
-        controller = new Controller(model);
+        controller = new Controller();
         layout = new Layout(controller);
 
         Scene scene = layout.init();
+
+        model = new Aquarium();
+        controller.setModel(model);
+
 
         stage.setScene(scene);
         stage.show();

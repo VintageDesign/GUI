@@ -24,10 +24,6 @@ public class Aquarium {
     private Tile[][] tank;
 
     Aquarium(){
-        rows = 3;
-        cols = 3;
-
-        createNewTank();
 
     }
 
@@ -39,7 +35,7 @@ public class Aquarium {
     public void doAction(Integer row, Integer col, MouseEvent e){
         System.out.println("Doing action " + action.toString() + " on " + row.toString() + ", " + col.toString());
         tank[row][col].newFish(action);
-        subject[row][col].firePropertyChange("Update", 0, tank[row][col]);
+        subject[row][col].firePropertyChange("Update", 0, tank[row][col].getFish());
     }
 
     public void setBowlSize(Integer rowsIn, Integer colsIn){

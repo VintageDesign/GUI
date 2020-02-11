@@ -28,6 +28,8 @@ public class TileView extends Button implements PropertyChangeListener{
     public void propertyChange(PropertyChangeEvent propertyChangeEvent) {
         Fish newFish = (Fish) propertyChangeEvent.getNewValue();
 
-
+        setText(newFish.getType()
+                + "\nHealth: " + newFish.getHealth().toString()
+                + "\nHunger: " + newFish.getHunger().toString());
     }
 }

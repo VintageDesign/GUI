@@ -61,6 +61,6 @@ public class TankView extends GridPane {
     }
 
     public TileView getTileView(Integer row, Integer col){
-        return fishList.get(row*rows + col);
+        return fishList.get(row*cols + col);
     }
 }
