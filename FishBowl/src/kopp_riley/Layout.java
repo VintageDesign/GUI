@@ -2,10 +2,12 @@ package kopp_riley;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
@@ -74,7 +76,8 @@ public class Layout {
         actionSelection.setOnAction(controller.getComboBoxEvent());
         actionSelection.getSelectionModel().selectFirst();
 
-        // TODO add events
+        feedAmount.addEventFilter(KeyEvent.KEY_RELEASED, controller.getFeedAmountEvent());
+        feed.addEventFilter(MouseEvent.MOUSE_CLICKED, controller.getFeedFishEvent());
 
         list.add(actionSelection);
         list.add(spacing);

@@ -1,6 +1,7 @@
 package kopp_riley;
 
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 
@@ -23,7 +24,12 @@ public class Aquarium {
 
     private Tile[][] tank;
 
+    private Integer feedAmount;
+    private Integer numFish;
+
     Aquarium(){
+        feedAmount = 0;
+        numFish    = 0;
 
     }
 
@@ -33,8 +39,12 @@ public class Aquarium {
     }
 
     public void doAction(Integer row, Integer col, MouseEvent e){
-        System.out.println("Doing action " + action.toString() + " on " + row.toString() + ", " + col.toString());
-        tank[row][col].newFish(action);
+        //System.out.println("Doing action " + action.toString() + " on " + row.toString() + ", " + col.toString());
+        if (action < 2) {
+            tank[row][col].newFish(action);
+            numFish++;
+        }
+
         subject[row][col].firePropertyChange("Update", 0, tank[row][col].getFish());
     }
 
@@ -63,5 +73,30 @@ public class Aquarium {
 
     public void setDisplay(TankView tankIn) {
         tankView = tankIn;
+    }
+
+    public void feedFish() {
+        Integer individualFeedAmount = feedAmount / numFish;
+
+        for(int rowIdx = 0; rowIdx < rows; rowIdx++){
+            for(int colIdx = 0; colIdx < cols; colIdx++){
+                Fish temp = tank[rowIdx][colIdx].getFish();
+                if(temp != null)
+                {
+                    temp.feedFish(individualFeedAmount);
+                    subject[rowIdx][colIdx].firePropertyChange("Update", 0, tank[rowIdx][colIdx].getFish());
+                }
+            }
+        }
+
+    }
+
+    public void setFeedAmount(TextField source) {
+        try {
+            feedAmount = Integer.parseInt(source.getText());
+        }
+        catch (java.lang.NumberFormatException e ){
+
+        }
     }
 }

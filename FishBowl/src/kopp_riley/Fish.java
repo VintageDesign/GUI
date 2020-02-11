@@ -10,6 +10,7 @@ public abstract class Fish {
 
     void feedFish(Integer amt){
         hunger -= amt;
+        if (hunger < 0 ) hunger = 0;
         return;
     }
 

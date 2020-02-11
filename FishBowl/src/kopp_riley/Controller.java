@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 public class Controller {
@@ -21,6 +22,16 @@ public class Controller {
             TileView button  = (TileView) mouseEvent.getSource();
 
             model.doAction(button.getRow(), button.getCol(), mouseEvent);
+
+        }
+    }
+
+    private class FeedFishEvent implements EventHandler<MouseEvent> {
+
+        @Override
+        public void handle(MouseEvent mouseEvent) {
+
+            model.feedFish();
 
         }
     }
@@ -50,6 +61,13 @@ public class Controller {
         }
     }
 
+    private class UpdateFeedAmount implements EventHandler<KeyEvent>{
+
+        public void handle(KeyEvent e)
+        {
+            model.setFeedAmount((TextField) e.getSource());
+        }
+    }
     public void setLayout(Layout layoutIn){
         layout = layoutIn;
     }
@@ -70,4 +88,7 @@ public class Controller {
     public AddFishEvent getFishButtonEvent(){
         return new AddFishEvent();
     }
+
+    public UpdateFeedAmount getFeedAmountEvent(){return new UpdateFeedAmount();}
+    public FeedFishEvent getFeedFishEvent(){return new FeedFishEvent();}
 }
