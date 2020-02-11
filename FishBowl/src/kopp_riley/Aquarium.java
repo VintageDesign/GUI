@@ -3,6 +3,7 @@ package kopp_riley;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 
 
 import java.beans.PropertyChangeSupport;
@@ -98,5 +99,14 @@ public class Aquarium {
         catch (java.lang.NumberFormatException e ){
 
         }
+    }
+
+    public void newDay(Text bowlInfo) {
+        dayCount++;
+
+        bowlInfo.setText("Day: " + dayCount.toString() +
+                "\nFilled: " + numFish.toString() +
+                "\nDied: " + deathCount.toString());
+
     }
 }

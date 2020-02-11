@@ -108,6 +108,8 @@ public class Layout {
         medium.addEventHandler(MouseEvent.MOUSE_CLICKED, controller.getResizeBowl(4, 5));
         large.addEventHandler(MouseEvent.MOUSE_CLICKED, controller.getResizeBowl(6, 8));
 
+        newDayButton.addEventHandler(MouseEvent.MOUSE_CLICKED, controller.getNewDayEvent());
+
         // Prettify the Formatting
         HBox resizeOptions = new HBox();
         resizeOptions.setAlignment(Pos.CENTER_LEFT);
@@ -134,4 +136,7 @@ public class Layout {
         return tank;
     }
 
+    public Text getBowlInfo() {
+        return bowlInfo;
+    }
 }

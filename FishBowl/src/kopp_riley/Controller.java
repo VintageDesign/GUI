@@ -36,6 +36,16 @@ public class Controller {
         }
     }
 
+    private class NewDayEvent implements EventHandler<MouseEvent> {
+
+        @Override
+        public void handle(MouseEvent mouseEvent) {
+
+            model.newDay(layout.getBowlInfo());
+
+        }
+    }
+
     private class ResizeBowl implements EventHandler<MouseEvent> {
         private Integer rows;
         private Integer cols;
@@ -91,4 +101,5 @@ public class Controller {
 
     public UpdateFeedAmount getFeedAmountEvent(){return new UpdateFeedAmount();}
     public FeedFishEvent getFeedFishEvent(){return new FeedFishEvent();}
+    public NewDayEvent getNewDayEvent(){return new NewDayEvent();}
 }
