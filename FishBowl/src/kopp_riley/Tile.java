@@ -15,7 +15,7 @@ public class Tile {
             case 1:
                 fish = new AngelFish();
                 break;
-            case 3:
+            case 2:
                 fish = null;
                 break;
         }
@@ -23,5 +23,9 @@ public class Tile {
 
     public Fish getFish() {
         return fish;
+    }
+
+    public void newDay(){
+        fish.newDay();
     }
 }

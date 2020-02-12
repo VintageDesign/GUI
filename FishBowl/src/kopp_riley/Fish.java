@@ -14,7 +14,7 @@ public abstract class Fish {
         return;
     }
 
-    void newDay(){
+    public Integer newDay(){
         hunger += hungerRate;
         if(hunger < hungerThreshold){
             health -= healthLossRate;
@@ -23,10 +23,16 @@ public abstract class Fish {
             health -= (2 * healthLossRate);
         }
 
+        if(health < 0){
+            health = 0;
+        }
+
         if( hunger > 100)
         {
             hunger = 100;
         }
+
+        return health;
     }
 
     public Integer getHealth() {

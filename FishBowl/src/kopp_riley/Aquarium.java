@@ -61,6 +61,7 @@ public class Aquarium {
         dayCount = 0;
         deathCount = 0;
         action = 0;
+        numFish = 0;
 
         for(int rowIdx = 0; rowIdx < rows; rowIdx++){
             for(int colIdx = 0; colIdx < cols; colIdx++){
@@ -104,9 +105,24 @@ public class Aquarium {
     public void newDay(Text bowlInfo) {
         dayCount++;
 
+
+        for(int rowIdx = 0; rowIdx < rows; rowIdx++){
+            for(int colIdx = 0; colIdx < cols; colIdx++){
+                Fish temp = tank[rowIdx][colIdx].getFish();
+                if(temp != null)
+                {
+                    if (temp.newDay() == 0){
+                        tank[rowIdx][colIdx].newFish(2);
+                        deathCount++;
+                        numFish--;
+                    }
+                    subject[rowIdx][colIdx].firePropertyChange("Update", 0, tank[rowIdx][colIdx].getFish());
+                }
+            }
+        }
+
         bowlInfo.setText("Day: " + dayCount.toString() +
                 "\nFilled: " + numFish.toString() +
                 "\nDied: " + deathCount.toString());
-
     }
 }
