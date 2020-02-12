@@ -18,7 +18,7 @@ public class Layout {
     Controller controller;
 
     // Action Bar Items
-    private String    actionsList[] = { "GoldFish", "AngelFish", "Remove"};
+    private String    actionsList[] = { "GoldFish", "AngelFish", "Betta", "Remove"};
     private ComboBox  actionSelection;
     private TextField feedAmount;
     private Button    feed;

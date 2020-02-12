@@ -7,6 +7,7 @@ public abstract class Fish {
     protected Integer  healthLossRate;
     protected Integer  hungerRate;
     protected Integer  hungerThreshold;
+    protected Boolean  visited;
 
     void feedFish(Integer amt){
         hunger -= amt;
@@ -41,5 +42,13 @@ public abstract class Fish {
     public String  getType(){ return type;}
     public Integer getHunger() {
         return hunger;
+    }
+
+    public Boolean isVisited(){
+        return visited;
+    }
+
+    public void setVisited(Boolean flag){
+        visited = flag;
     }
 }

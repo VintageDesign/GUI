@@ -16,6 +16,9 @@ public class Tile {
                 fish = new AngelFish();
                 break;
             case 2:
+                fish = new Betta();
+                break;
+            case 3:
                 fish = null;
                 break;
         }

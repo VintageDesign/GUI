@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.beans.EventHandler;
 
 public class Aquarium {
+    private final Integer KILL = 3;
     private TankView tankView;
     private Integer rows;
     private PropertyChangeSupport[][] subject;
@@ -42,7 +43,7 @@ public class Aquarium {
     public void doAction(Integer row, Integer col, MouseEvent e){
         //System.out.println("Doing action " + action.toString() + " on " + row.toString() + ", " + col.toString());
         tank[row][col].newFish(action);
-        if (action < 2) {
+        if (action < 3) {
             numFish++;
         }
         else{
@@ -115,12 +116,16 @@ public class Aquarium {
                 Fish temp = tank[rowIdx][colIdx].getFish();
                 if(temp != null)
                 {
-                    if (temp.newDay() == 0){
-                        tank[rowIdx][colIdx].newFish(2);
-                        deathCount++;
-                        numFish--;
+                    if (!temp.isVisited()) {
+                        temp.setVisited(true);
+                        
+                        if (temp.newDay() == 0) {
+                            tank[rowIdx][colIdx].newFish(KILL);
+                            deathCount++;
+                            numFish--;
+                        }
+                        subject[rowIdx][colIdx].firePropertyChange("Update", 0, tank[rowIdx][colIdx].getFish());
                     }
-                    subject[rowIdx][colIdx].firePropertyChange("Update", 0, tank[rowIdx][colIdx].getFish());
                 }
             }
         }
