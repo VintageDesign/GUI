@@ -20,7 +20,7 @@ public abstract class Fish {
             health -= healthLossRate;
         }
         else {
-            health -= (2 * healthLossRate);
+            health -=  healthLossRate + 2;
         }
 
         if(health < 0){
