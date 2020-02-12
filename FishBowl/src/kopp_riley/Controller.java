@@ -22,6 +22,7 @@ public class Controller {
             TileView button  = (TileView) mouseEvent.getSource();
 
             model.doAction(button.getRow(), button.getCol(), mouseEvent);
+            layout.update(model.getDay(), model.getFilled(), model.getDead());
 
         }
     }
@@ -41,7 +42,8 @@ public class Controller {
         @Override
         public void handle(MouseEvent mouseEvent) {
 
-            model.newDay(layout.getBowlInfo());
+            model.newDay();
+            layout.update(model.getDay(), model.getFilled(), model.getDead());
 
         }
     }
@@ -59,7 +61,7 @@ public class Controller {
         public void handle(MouseEvent mouseEvent) {
             layout.getTank().resize(rows, cols);
             model.setBowlSize(rows, cols);
-
+            layout.update(model.getDay(), model.getFilled(), model.getDead());
         }
     }
 

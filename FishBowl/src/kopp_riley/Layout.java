@@ -136,7 +136,9 @@ public class Layout {
         return tank;
     }
 
-    public Text getBowlInfo() {
-        return bowlInfo;
+    public void update(Integer day, Integer filled, Integer dead){
+        bowlInfo.setText("Day: " + day.toString() +
+                "\nFilled: " + filled.toString() +
+                "\nDied: " + dead.toString());
     }
 }

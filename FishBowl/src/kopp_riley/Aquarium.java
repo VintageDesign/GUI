@@ -41,9 +41,12 @@ public class Aquarium {
 
     public void doAction(Integer row, Integer col, MouseEvent e){
         //System.out.println("Doing action " + action.toString() + " on " + row.toString() + ", " + col.toString());
+        tank[row][col].newFish(action);
         if (action < 2) {
-            tank[row][col].newFish(action);
             numFish++;
+        }
+        else{
+            numFish--;
         }
 
         subject[row][col].firePropertyChange("Update", 0, tank[row][col].getFish());
@@ -102,7 +105,7 @@ public class Aquarium {
         }
     }
 
-    public void newDay(Text bowlInfo) {
+    public void newDay() {
         dayCount++;
 
 
@@ -121,8 +124,17 @@ public class Aquarium {
             }
         }
 
-        bowlInfo.setText("Day: " + dayCount.toString() +
-                "\nFilled: " + numFish.toString() +
-                "\nDied: " + deathCount.toString());
+    }
+
+    public Integer getDay() {
+        return dayCount;
+    }
+
+    public Integer getDead(){
+        return deathCount;
+    }
+
+    public Integer getFilled(){
+        return numFish;
     }
 }
