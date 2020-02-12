@@ -48,7 +48,7 @@ public class Aquarium {
         else{
             numFish--;
         }
-
+        // GRADING: TRIGGER
         subject[row][col].firePropertyChange("Update", 0, tank[row][col].getFish());
     }
 
@@ -70,6 +70,7 @@ public class Aquarium {
             for(int colIdx = 0; colIdx < cols; colIdx++){
                 tank[rowIdx][colIdx]    = new Tile();
                 subject[rowIdx][colIdx] = new PropertyChangeSupport(this);
+                // GRADING: SUBJECT
                 subject[rowIdx][colIdx].addPropertyChangeListener(tankView.getTileView(rowIdx, colIdx));
             }
         }

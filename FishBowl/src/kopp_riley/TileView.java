@@ -24,6 +24,7 @@ public class TileView extends Button implements PropertyChangeListener{
         return row;
     }
 
+    // GRADING: OBSERVE
     @Override
     public void propertyChange(PropertyChangeEvent propertyChangeEvent) {
         Fish newFish = (Fish) propertyChangeEvent.getNewValue();
