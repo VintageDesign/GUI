@@ -2,6 +2,7 @@ package kopp_riley;
 
 public class AngelFish extends Fish{
     AngelFish(){
+        visited         = false;
         type            = "AngleFish";
         health          = 10;
         hunger          = 0;

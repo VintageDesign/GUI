@@ -1,6 +1,6 @@
 package kopp_riley;
 
-public abstract class Fish {
+public abstract class Fish implements Cloneable{
     protected String   type;
     protected Integer  health;
     protected Integer  hunger;
@@ -50,5 +50,9 @@ public abstract class Fish {
 
     public void setVisited(Boolean flag){
         visited = flag;
+    }
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

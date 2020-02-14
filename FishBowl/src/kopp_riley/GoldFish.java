@@ -2,6 +2,7 @@ package kopp_riley;
 
 public class GoldFish extends Fish{
     GoldFish(){
+        visited         = false;
         type            = "GoldFish";
         health          = 6;
         hunger          = 0;

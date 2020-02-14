@@ -27,6 +27,14 @@ public class Tile {
     public Fish getFish() {
         return fish;
     }
+    public void setFish(Fish newFish) {
+        try {
+            fish = (Fish) newFish.clone();
+        }
+        catch (CloneNotSupportedException e ){
+
+        }
+    }
 
     public void newDay(){
         fish.newDay();

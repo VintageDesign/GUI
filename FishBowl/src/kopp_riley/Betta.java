@@ -3,6 +3,7 @@ package kopp_riley;
 public class Betta extends Fish {
 
     Betta(){
+        visited         = false;
         type            = "Betta";
         health          = 15;
         hunger          = 0;
@@ -11,10 +12,4 @@ public class Betta extends Fish {
         hungerThreshold = 90;
     }
 
-    @Override
-    public Integer newDay() {
-        // Move randomly
-
-        return super.newDay();
-    }
 }
