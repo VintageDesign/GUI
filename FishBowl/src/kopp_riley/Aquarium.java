@@ -13,7 +13,11 @@ import java.awt.event.ActionEvent;
 import java.beans.EventHandler;
 import java.util.Random;
 
+/**************************************************************************************************
+ * @author Riley Kopp
+ *************************************************************************************************/
 public class Aquarium {
+
     private final Integer KILL = 3;
     private TankView tankView;
     private Integer rows;
@@ -30,51 +34,68 @@ public class Aquarium {
     private Integer feedAmount;
     private Integer numFish;
 
-    Aquarium(){
+
+    /***********************************************************************************************
+     * Default Constructor for the Aquarium
+     **********************************************************************************************/
+    Aquarium() {
         feedAmount = 0;
-        numFish    = 0;
-        action     = 0;
+        numFish = 0;
+        action = 0;
 
     }
 
 
+    /***********************************************************************************************
+     * Sets the selected action for add/remove fish. (See controller for encoding values)
+     **********************************************************************************************/
     public void setAction(ComboBox e) {
         action = e.getSelectionModel().getSelectedIndex();
     }
 
-    public void doAction(Integer row, Integer col, MouseEvent e){
+    /***********************************************************************************************
+     * Does the specified action defined by the acton variable on the specified fish
+     **********************************************************************************************/
+    public void doAction(Integer row, Integer col, MouseEvent e) {
         //System.out.println("Doing action " + action.toString() + " on " + row.toString() + ", " + col.toString());
         Boolean newfish = false;
-        if(tank[row][col].getFish()== null){
-           newfish = true;
+        if (tank[row][col].getFish() == null) {
+            newfish = true;
         }
         tank[row][col].newFish(action);
         if (action < 3 && newfish) {
             numFish++;
-        }
-        else if (action == 3){
+        } else if (action == 3) {
             numFish--;
         }
         // GRADING: TRIGGER
         subject[row][col].firePropertyChange("Update", 0, tank[row][col].getFish());
     }
 
-    public void setBowlSize(Integer rowsIn, Integer colsIn){
+
+    /***********************************************************************************************
+     * Sets the new bowl size and recreates the bowl
+     **********************************************************************************************/
+    public void setBowlSize(Integer rowsIn, Integer colsIn) {
         rows = rowsIn;
         cols = colsIn;
 
         createNewTank();
     }
-    private void createNewTank(){
+
+    /***********************************************************************************************
+     * Creates the new sized tank
+     **********************************************************************************************/
+    private void createNewTank() {
         tank = new Tile[rows][cols];
         subject = new PropertyChangeSupport[rows][cols];
         dayCount = 0;
         deathCount = 0;
         numFish = 0;
 
-        for(int rowIdx = 0; rowIdx < rows; rowIdx++){
-            for(int colIdx = 0; colIdx < cols; colIdx++){
-                tank[rowIdx][colIdx]    = new Tile();
+        for (int rowIdx = 0; rowIdx < rows; rowIdx++) {
+            for (int colIdx = 0; colIdx < cols; colIdx++) {
+                tank[rowIdx][colIdx] = new Tile();
                 subject[rowIdx][colIdx] = new PropertyChangeSupport(this);
                 // GRADING: SUBJECT
                 subject[rowIdx][colIdx].addPropertyChangeListener(tankView.getTileView(rowIdx, colIdx));
@@ -83,18 +104,23 @@ public class Aquarium {
 
     }
 
+    /***********************************************************************************************
+     * Sets the new copy of the tank view so the observer can be set correctly
+     **********************************************************************************************/
     public void setDisplay(TankView tankIn) {
         tankView = tankIn;
     }
 
+    /***********************************************************************************************
+     * Feeds the fishies
+     **********************************************************************************************/
     public void feedFish() {
         Integer individualFeedAmount = feedAmount / numFish;
 
-        for(int rowIdx = 0; rowIdx < rows; rowIdx++){
-            for(int colIdx = 0; colIdx < cols; colIdx++){
+        for (int rowIdx = 0; rowIdx < rows; rowIdx++) {
+            for (int colIdx = 0; colIdx < cols; colIdx++) {
                 Fish temp = tank[rowIdx][colIdx].getFish();
-                if(temp != null)
-                {
+                if (temp != null) {
                     temp.feedFish(individualFeedAmount);
                     subject[rowIdx][colIdx].firePropertyChange("Update", 0, tank[rowIdx][colIdx].getFish());
                 }
@@ -103,15 +129,20 @@ public class Aquarium {
 
     }
 
+    /***********************************************************************************************
+     * Sets the amount of food to feed each fish
+     **********************************************************************************************/
     public void setFeedAmount(TextField source) {
         try {
             feedAmount = Integer.parseInt(source.getText());
-        }
-        catch (java.lang.NumberFormatException e ){
+        } catch (java.lang.NumberFormatException e) {
 
         }
     }
 
+    /***********************************************************************************************
+     * Updates each of the fish and will trigger movement of bettas
+     **********************************************************************************************/
     public void newDay() {
         Random rand = new Random();
         dayCount++;
@@ -119,19 +150,17 @@ public class Aquarium {
         Integer newRowIdx = 0;
 
 
-        for(Integer rowIdx = 0; rowIdx < rows; rowIdx++){
-            for(Integer colIdx = 0; colIdx < cols; colIdx++){
+        for (Integer rowIdx = 0; rowIdx < rows; rowIdx++) {
+            for (Integer colIdx = 0; colIdx < cols; colIdx++) {
                 Fish temp = tank[rowIdx][colIdx].getFish();
-                if(temp != null)
-                {
+                if (temp != null) {
                     if (!temp.isVisited()) {
                         temp.setVisited(true);
-                        if (temp.getType() == "Betta"){
+                        if (temp.getType() == "Betta") {
                             newColIdx = rand.nextInt(cols);
                             newRowIdx = rand.nextInt(rows);
-                         
-                        }
-                        else{
+
+                        } else {
 
                             newColIdx = colIdx;
                             newRowIdx = rowIdx;
@@ -141,8 +170,7 @@ public class Aquarium {
                             tank[rowIdx][colIdx].newFish(KILL);
                             deathCount++;
                             numFish--;
-                        }
-                        else if (temp.getType() == "Betta" && (newColIdx != colIdx || newRowIdx != rowIdx)) {
+                        } else if (temp.getType() == "Betta" && (newColIdx != colIdx || newRowIdx != rowIdx)) {
                             if (tank[newRowIdx][newColIdx].getFish() != null) {
                                 tank[newRowIdx][newColIdx].newFish(KILL);
                                 deathCount++;
@@ -159,26 +187,35 @@ public class Aquarium {
             }
         }
 
-        for(int rowIdx = 0; rowIdx < rows; rowIdx++){
-            for(int colIdx = 0; colIdx < cols; colIdx++){
+        for (int rowIdx = 0; rowIdx < rows; rowIdx++) {
+            for (int colIdx = 0; colIdx < cols; colIdx++) {
                 Fish temp = tank[rowIdx][colIdx].getFish();
-                if(temp != null)
-                {
+                if (temp != null) {
                     temp.setVisited(false);
                 }
             }
         }
     }
 
+    /***********************************************************************************************
+     * Returns the day count
+     **********************************************************************************************/
     public Integer getDay() {
         return dayCount;
     }
 
-    public Integer getDead(){
+    /***********************************************************************************************
+     * Returns the number of dead fishes
+     **********************************************************************************************/
+    public Integer getDead() {
         return deathCount;
     }
 
-    public Integer getFilled(){
+
+    /***********************************************************************************************
+     * Returns the number of filled grid slots
+     **********************************************************************************************/
+    public Integer getFilled() {
         return numFish;
     }
 }
