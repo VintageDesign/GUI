@@ -1,12 +1,20 @@
 package kopp_riley;
 
+/***************************************************************************************************
+ * @author Riley Kopp
+ * The tile class
+ **************************************************************************************************/
 public class Tile {
     private Fish fish;
 
     Tile(){
-
+        // Intentionally left Empty
     }
 
+
+    /***************************************************************************************************
+     * adds or removes the fish from the tile
+     **************************************************************************************************/
     void newFish(Integer action){
         switch (action){
             case 0:
@@ -36,7 +44,4 @@ public class Tile {
         }
     }
 
-    public void newDay(){
-        fish.newDay();
-    }
 }
