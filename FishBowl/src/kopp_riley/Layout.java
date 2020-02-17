@@ -12,10 +12,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
+/***********************************************************************************************
+ * @author Riley Kopp
+ *
+ * Defines the appearace of the Fish tank
+ **********************************************************************************************/
 public class Layout {
 
     // Link to Controller
-    Controller controller;
+    private Controller controller;
 
     // Action Bar Items
     private String    actionsList[] = { "GoldFish", "AngelFish", "Betta", "Remove"};
@@ -33,8 +38,9 @@ public class Layout {
     // Tank View
     private TankView tank;
 
-
-
+    /***********************************************************************************************
+     * Sets the appearance and returns the stage to be set in main
+     **********************************************************************************************/
     public Scene init(){
         Scene scene;
 
@@ -48,11 +54,17 @@ public class Layout {
         return scene;
     }
 
+    /***********************************************************************************************
+     * Default constructor for Layout
+     **********************************************************************************************/
     Layout(Controller controllerIn){
         controller = controllerIn;
         controller.setLayout(this);
     }
 
+    /***********************************************************************************************
+     * Sets the appearance of the action bar on the left
+     **********************************************************************************************/
     private VBox setupActionBar(){
         VBox side = new VBox();
         side.setAlignment(Pos.CENTER);
@@ -91,6 +103,9 @@ public class Layout {
         return side;
     }
 
+    /***********************************************************************************************
+     * Sets the appearance of the info bar on the bottom of the window
+     **********************************************************************************************/
     private BorderPane setupInfoBar(){
         BorderPane info = new BorderPane();
 
@@ -103,7 +118,6 @@ public class Layout {
         large        = new Button("6x8");
 
 
-        // TODO add events
         small.addEventHandler(MouseEvent.MOUSE_CLICKED, controller.getResizeBowl(3, 3));
         medium.addEventHandler(MouseEvent.MOUSE_CLICKED, controller.getResizeBowl(4, 5));
         large.addEventHandler(MouseEvent.MOUSE_CLICKED, controller.getResizeBowl(6, 8));
@@ -126,16 +140,23 @@ public class Layout {
         return info;
     }
 
+    /***********************************************************************************************
+     * Sets the appearance of tank itself
+     **********************************************************************************************/
     private TankView setupTank(){
         tank = new TankView(controller);
 
         return tank;
     }
 
+    // Getter for tank
     public TankView getTank(){
         return tank;
     }
 
+    /***********************************************************************************************
+     * Updates the info bar
+     **********************************************************************************************/
     public void update(Integer day, Integer filled, Integer dead){
         bowlInfo.setText("Day: " + day.toString() +
                 "\nFilled: " + filled.toString() +
