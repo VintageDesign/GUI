@@ -1,5 +1,9 @@
 package kopp_riley;
 
+/***********************************************************************************************
+ * @author Riley Kopp
+ * Class of goldfish
+ **********************************************************************************************/
 public class GoldFish extends Fish{
     GoldFish(){
         visited         = false;
