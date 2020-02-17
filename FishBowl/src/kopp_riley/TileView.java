@@ -5,10 +5,17 @@ import javafx.scene.control.Button;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+/***************************************************************************************************
+ * @author Riley Kopp
+ * Tileview class
+ **************************************************************************************************/
 public class TileView extends Button implements PropertyChangeListener{
     private Integer row;
     private Integer col;
 
+    /***************************************************************************************************
+     * Default constructor for the TileView
+     **************************************************************************************************/
     TileView(Integer rowIn, Integer colIn) {
         row = rowIn;
         col = colIn;
@@ -16,14 +23,9 @@ public class TileView extends Button implements PropertyChangeListener{
     }
 
 
-    public Integer getCol() {
-        return col;
-    }
-
-    public Integer getRow() {
-        return row;
-    }
-
+    /***************************************************************************************************
+     * Observer Update code
+     **************************************************************************************************/
     // GRADING: OBSERVE
     @Override
     public void propertyChange(PropertyChangeEvent propertyChangeEvent) {
@@ -38,4 +40,14 @@ public class TileView extends Button implements PropertyChangeListener{
         }
 
     }
+
+    // Getters
+    public Integer getCol() {
+        return col;
+    }
+
+    public Integer getRow() {
+        return row;
+    }
+
 }
