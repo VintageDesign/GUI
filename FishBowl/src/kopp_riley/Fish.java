@@ -1,5 +1,11 @@
 package kopp_riley;
 
+
+
+/***********************************************************************************************
+ * @author Riley Kopp
+ * The base class for all fish instances
+ **********************************************************************************************/
 public abstract class Fish implements Cloneable{
     protected String   type;
     protected Integer  health;
@@ -9,12 +15,19 @@ public abstract class Fish implements Cloneable{
     protected Integer  hungerThreshold;
     protected Boolean  visited;
 
+
+    /***********************************************************************************************
+     * Removes the amount fed from hunger
+     **********************************************************************************************/
     void feedFish(Integer amt){
         hunger -= amt;
         if (hunger < 0 ) hunger = 0;
         return;
     }
 
+    /***********************************************************************************************
+     * Applies health loss and hunger gain
+     **********************************************************************************************/
     public Integer newDay(){
         hunger += hungerRate;
         if(hunger < hungerThreshold){
@@ -36,6 +49,9 @@ public abstract class Fish implements Cloneable{
         return health;
     }
 
+    /***********************************************************************************************
+     * getters
+     **********************************************************************************************/
     public Integer getHealth() {
         return health;
     }
