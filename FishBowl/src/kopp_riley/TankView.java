@@ -7,6 +7,10 @@ import javafx.scene.layout.Priority;
 
 import java.util.ArrayList;
 
+/***************************************************************************************************
+ * @author Riley Kopp
+ * The tank view
+ **************************************************************************************************/
 public class TankView extends GridPane {
     Integer rows;
     Integer cols;
@@ -14,6 +18,9 @@ public class TankView extends GridPane {
 
     Controller controller;
 
+    /***************************************************************************************************
+     * The default constructor for the display
+     **************************************************************************************************/
     ArrayList<TileView> fishList;
     TankView(Controller controllerIn){
         controller = controllerIn;
@@ -23,10 +30,9 @@ public class TankView extends GridPane {
         createBowl();
     }
 
-    void setMode(Aquarium newModel){
-
-    }
-
+    /***************************************************************************************************
+     * Resizes the display and grid pane size
+     **************************************************************************************************/
     void resize(Integer rowsIn, Integer colsIn){
         getChildren().clear();
         getRowConstraints().clear();
@@ -38,6 +44,9 @@ public class TankView extends GridPane {
         createBowl();
     }
 
+    /***************************************************************************************************
+     * Creates the new bowl and all the tiles within it
+     **************************************************************************************************/
     private void createBowl(){
         TileView tempFish;
         fishList = new ArrayList<TileView>();
@@ -60,6 +69,9 @@ public class TankView extends GridPane {
         }
     }
 
+    /***************************************************************************************************
+     * Getter for the tile view
+     **************************************************************************************************/
     public TileView getTileView(Integer row, Integer col){
         return fishList.get(row*cols + col);
     }
