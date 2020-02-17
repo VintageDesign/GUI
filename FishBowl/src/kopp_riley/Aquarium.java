@@ -115,14 +115,16 @@ public class Aquarium {
      * Feeds the fishies
      **********************************************************************************************/
     public void feedFish() {
-        Integer individualFeedAmount = feedAmount / numFish;
+        if(feedAmount > 0) {
+            Integer individualFeedAmount = feedAmount / numFish;
 
-        for (int rowIdx = 0; rowIdx < rows; rowIdx++) {
-            for (int colIdx = 0; colIdx < cols; colIdx++) {
-                Fish temp = tank[rowIdx][colIdx].getFish();
-                if (temp != null) {
-                    temp.feedFish(individualFeedAmount);
-                    subject[rowIdx][colIdx].firePropertyChange("Update", 0, tank[rowIdx][colIdx].getFish());
+            for (int rowIdx = 0; rowIdx < rows; rowIdx++) {
+                for (int colIdx = 0; colIdx < cols; colIdx++) {
+                    Fish temp = tank[rowIdx][colIdx].getFish();
+                    if (temp != null) {
+                        temp.feedFish(individualFeedAmount);
+                        subject[rowIdx][colIdx].firePropertyChange("Update", 0, tank[rowIdx][colIdx].getFish());
+                    }
                 }
             }
         }
