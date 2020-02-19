@@ -181,6 +181,7 @@ public class Aquarium {
                             tank[newRowIdx][newColIdx].setFish(tank[rowIdx][colIdx].getFish());
                             tank[rowIdx][colIdx].newFish(KILL);
                         }
+                        // GRADING: TRIGGER
                         subject[newRowIdx][newColIdx].firePropertyChange("Update", 0, tank[newRowIdx][newColIdx].getFish());
                         subject[rowIdx][colIdx].firePropertyChange("Update", 0, tank[rowIdx][colIdx].getFish());
 
