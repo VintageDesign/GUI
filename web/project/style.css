@@ -1,4 +1,28 @@
 body {
-    text-align: center;
 }
 
+#picture {
+    display: grid;
+    grid-gap: .125em;
+    max-width: 85vw;
+    max-height: 85%;
+    place-items: center;
+    place-content: center;
+    margin: 0;
+}
+
+#frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85vh;
+}
+
+
+#ind {
+    width: 25px;
+    height: 25px;
+    border: black;
+    border-style: solid;
+    border-width: 2px;
+}

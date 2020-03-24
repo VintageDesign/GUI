@@ -12,9 +12,8 @@ class Picture {
 
         picture.innerHTML = "";
 
-        console.log("test");
         
-        for(var i = 0; i < size_in; i++)
+        for(var i = 0; i < size_in*size_in; i++)
         {
             let pixel = document.createElement('div');
 
@@ -27,6 +26,10 @@ class Picture {
             });
 
             pixel.style.backgroundColor = 'black';
+
+            pixel.style.width = "25px"
+            pixel.style.height = "25px"
+
             this.colors.push('white');
 
             picture.appendChild(pixel);
@@ -36,7 +39,9 @@ class Picture {
 
         let templateSize = '1fr '.repeat(this.size);
 
-        picture.style.gridTemplateRows = this.templateSize;
+
+        picture.style.gridTemplateRows = templateSize;
+        picture.style.gridTemplateColumns = templateSize;
 
         // TODO add undoer stuff here
     }

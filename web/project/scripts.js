@@ -1,4 +1,4 @@
-var selectedColor = 'white';
+var selectedColor = 'green';
 var pic, undoer;
 
 
@@ -47,5 +47,5 @@ window.onload = () => {
 
 
 function updateInd() {
-    document.getElementById('selected_color').style.backgroundColor = selectedColor;
+    document.getElementById('ind').style.backgroundColor = selectedColor;
 }
