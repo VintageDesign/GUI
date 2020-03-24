@@ -6,6 +6,9 @@
 
 <head>
     <link rel="stylesheet" href="style.css">
+    <script src="picture.js" charset="utf-8"></script>
+    <script src="scripts.js" charset="utf-8"></script>
+
     Main
     <a href="file_mgmt.html">Files</a>
     <a href="help.html">Help</a>
@@ -13,12 +16,12 @@
 
 <body>
     <p>
-        <button class="color-button">W</button>
-        <button class="color-button">G</button>
-        <button class="color-button">B</button>
+        <button id="w" class="color-button">W</button>
+        <button id="g" class="color-button">G</button>
+        <button id="b" class="color-button">B</button>
         Selected Color: 
         <div id="selected_color"></div>
-        <input type="number" value="5" min="2" max="75" class="size"> </input>
+        <input  id="sizer" type="number" value="5" min="2" max="75" class="size"> </input>
         <button id="save" class="base-button">Save</button>
         <button id="undo" class="base-button">Undo</button>
         <button id="redo" class="base-button">Redo</button>

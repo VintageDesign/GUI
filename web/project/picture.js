@@ -11,12 +11,14 @@ class Picture {
         let picture = document.getElementById('picture');
 
         picture.innerHTML = "";
-        
-        for(i = 0; i < size; i++)
-        {
-            let pixel = picture.createElement('div');
 
-            pixel.id = "pixel_" + id.toString();
+        console.log("test");
+        
+        for(var i = 0; i < size_in; i++)
+        {
+            let pixel = document.createElement('div');
+
+            pixel.id = "pixel_" + i.toString();
             
             pixel.className = "Pixel";
 
@@ -24,7 +26,7 @@ class Picture {
                 this.changeColorWithUndo(e.target, selectedColor);
             });
 
-            pixel.style.backgroundColor = 'white';
+            pixel.style.backgroundColor = 'black';
             this.colors.push('white');
 
             picture.appendChild(pixel);
