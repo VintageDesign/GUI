@@ -1,0 +1,9 @@
+version: "3.1"
+services:
+  web:
+    build: .docker
+    container_name: gui-pixel-editor
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8080:80"
