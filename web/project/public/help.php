@@ -36,6 +36,7 @@
    or just press 'save' and the program will auto assign a name on the server.  
     </p>
    <h2>File Management</h2>
+   <p>File Management works exactly as assigned. No changes here.</p>
 </body>
 
 </html>
