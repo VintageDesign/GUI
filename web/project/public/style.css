@@ -1,4 +1,5 @@
 body {
+    /*GRADING: CSS*/
     font-family: 'Roboto', sans-serif;
     background-color: #B4C6C3;
     margin:0;
@@ -38,6 +39,7 @@ body {
 
 
 .page {
+    /*GRADING: CSS*/
     padding: 10px;
     border: black;
     border-style: solid;
@@ -45,6 +47,7 @@ body {
 }
 
 .currentPage {
+    /*GRADING: CSS*/
     border: #4E8077;
     background-color: #4E8077;
     border-style: solid;
