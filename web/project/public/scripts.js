@@ -5,7 +5,7 @@ var pic, undoer;
 window.onload = () => {
     pic = new Picture(5);
     cookie = getCookie("picture");
-    if (cookie !== undefined) {
+    if (cookie !== undefined && cookie != "") {
         pic.load(cookie)
     }
     undoer = new Undoer();
@@ -51,6 +51,7 @@ window.onload = () => {
     document.getElementById('sizer').addEventListener('change', (e)=>
     {
 
+        updateInd('white', true);
         pic.setGrid(e.target.value);
     });
 }
@@ -98,11 +99,11 @@ function deleteCookie(name) {
 
 
 function loadFromServer(filename) {
-    fetch('/load.php?filename=' + filename, {
+    fetch('./load.php?filename=' + filename, {
         method: 'get',
     })
         .then((response) => response.json())
         .then((jsonData) => setCookie("picture", jsonData, 1))
-        .then(() => {window.location.href="/index.php"})
+        .then(() => {window.location.href="./index.php"})
         .catch((err) => console.log(err));
 };

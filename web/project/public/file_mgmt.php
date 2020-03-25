@@ -6,20 +6,30 @@
 
 <head>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
     <script src="scripts.js" charset="utf-8"></script>
 
-    <a href="index.php">Main</a>
-    Files
-    <a href="help.php">Help</a>
+    <div id="menu">
+        <div class="page">
+            <a href="./index.php">Files</a>
+        </div>
+        <div class="page currentPage">
+            Files
+        </div>
+        <div class="page">
+            <a href="./help.php">Help</a>
+        </div>
+    </div>
 </head>
 
 <body>
 
-    <form action="file_mgmt.php" method="post" enctype="multipart/form-data">
-        <br>
-        Upload:
-        <input type="file" name="fileToUpload" id="fileToUpload">
-        <input type="submit" value="Upload" name="submit">
+    <form class="options" action="file_mgmt.php" method="post" enctype="multipart/form-data">
+        
+        <div class="option"> Upload:</div>
+        <input class="option" type="file" name="fileToUpload" id="fileToUpload">
+        <input class="option base-button" type="submit" value="Upload" name="submit">
     </form>
 
     <?php
@@ -42,8 +52,8 @@
     foreach ($myFiles as $f) {
         if ($f[0] != '.') {
             echo '<p>' . $f . ' ';
-            echo '<a href=' . 'uploads/' . $f . ' download><button>Download</button></a>';
-            echo '<button onclick=loadFromServer("' . $f . '")>Load</button></p>';
+            echo '<a href=' . './uploads/' . $f . ' download><button class="base-button">Download</button></a>';
+            echo '<button class="base-button" onclick=loadFromServer("' . $f . '")>Load</button></p>';
         }
     }
 

@@ -1,4 +1,7 @@
 body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #B4C6C3;
+    margin:0;
 }
 
 #picture {
@@ -22,7 +25,62 @@ body {
 #ind {
     width: 25px;
     height: 25px;
-    border: black;
+    border: black; 
     border-style: solid;
     border-width: 2px;
+}
+
+#menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+.page {
+    padding: 10px;
+    border: black;
+    border-style: solid;
+    border-width:3px;
+}
+
+.currentPage {
+    border: #4E8077;
+    background-color: #4E8077;
+    border-style: solid;
+
+}
+
+.options {
+    background-color: #74807E;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.option {
+
+    margin:0px 2px 0px 2px;
+}
+
+.base-button {
+    font:400 14px 'Roboto';
+    border:black;
+    border-width: 2px;
+    border-style: solid;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin: 1px;
+    background-color: #8F8C8C;
+}
+
+#w {
+    background-color: white;
+}
+#g {
+    background-color:green;
+}
+#b {
+    background-color: black;
+    color: white;
 }

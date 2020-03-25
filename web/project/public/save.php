@@ -18,6 +18,6 @@ fwrite($fileHandle, $data);
 fclose($fileHandle);
 
 
-header("Location: /index.php");
+header("Location: ./index.php");
 
 ?>
