@@ -13,7 +13,6 @@ public class GameView extends View {
 
     public GameView(Context context) {
         super(context);
-
         this.setBackgroundColor(Color.GRAY);
     }
 
@@ -30,5 +29,9 @@ public class GameView extends View {
     public GameView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         this.setBackgroundColor(Color.GRAY);
+    }
+
+    public void setPlayerShape(PlayerShape newShape) {
+
     }
 }
