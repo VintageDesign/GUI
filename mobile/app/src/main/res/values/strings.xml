@@ -2,5 +2,5 @@
     <string name="app_name">Adventure Kopp Riley</string>
     <string name="name">Kopp</string>
     <string name="score">Score: 0</string>
-    <string name="player_button">Choose Player</string>
+
 </resources>
