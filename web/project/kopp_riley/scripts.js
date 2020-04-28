@@ -39,7 +39,7 @@ window.onload = () => {
     document.getElementById('w').addEventListener('click', (e) =>{
         updateInd('white');
     });
-    
+
     document.getElementById('g').addEventListener('click', (e) =>{
         updateInd('green');
     });
@@ -60,7 +60,7 @@ window.onload = () => {
 function updateInd(new_color, undoing = false) {
     if(!undoing){
         // GRADING: ACTION
-        undoer.newAction(null, updateInd, [selectedColor, true], [new_color, true])        
+        undoer.newAction(null, updateInd, [selectedColor, true], [new_color, true])
     }
 
     selectedColor = new_color;
